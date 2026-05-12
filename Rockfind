@@ -1,1 +1,279 @@
+export default function RockfinderShowcase() {
+  const tabs = [
+    {
+      title: "Hur AI:n fungerar",
+      content:
+        "Rockfinder.io analyserar bergarter och mineral genom AI-baserad bildigenkänning. Användaren laddar upp en bild och systemet identifierar stenens egenskaper och jämför med sin databas.",
+    },
+    {
+      title: "Funktioner",
+      content:
+        "AI:n kan känna igen olika typer av stenar, ge information om mineraler, visa sannolikhet för träffsäkerhet och hjälpa användare inom geologi och utbildning.",
+    },
+    {
+      title: "Varför Rockfinder.io?",
+      content:
+        "Rockfinder.io kombinerar modern AI-teknik med ett enkelt gränssnitt som gör avancerad stenidentifiering tillgänglig för alla.",
+    },
+  ];
+
+  const [activeTab, setActiveTab] = React.useState(0);
+  const [messages, setMessages] = React.useState([
+    {
+      role: "ai",
+      text: "Hej! Ladda upp en stenbild eller skriv en fråga om mineraler.",
+    },
+  ]);
+
+  const fakeQuestions = [
+    "Vilken sten är detta?",
+    "Kan AI:n identifiera granit?",
+    "Hur hög är träffsäkerheten?",
+  ];
+
+  function sendFakeMessage(question) {
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", text: question },
+      {
+        role: "ai",
+        text:
+          "Analys klar: Det här liknar granit med hög sannolikhet. Mineralinnehåll: kvarts, fältspat och glimmer.",
+      },
+    ]);
+  }
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white font-sans overflow-hidden">
+      {/* HERO */}
+      <section className="relative px-8 py-20 md:px-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-transparent blur-3xl" />
+
+        <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/10 px-4 py-2 rounded-full text-sm mb-6 backdrop-blur">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              AI-driven rock analysis
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+              Utforska <span className="text-cyan-400">Rockfinder.io</span>
+            </h1>
+
+            <p className="text-zinc-300 text-lg leading-relaxed max-w-xl mb-8">
+              En modern AI-plattform som identifierar stenar och mineral med hjälp av bildanalys och maskininlärning.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-cyan-400 hover:bg-cyan-300 text-black font-bold px-6 py-3 rounded-2xl transition shadow-lg shadow-cyan-400/30">
+                Testa Demo
+              </button>
+
+              <button className="border border-white/20 hover:border-cyan-400 px-6 py-3 rounded-2xl transition backdrop-blur bg-white/5">
+                Läs Mer
+              </button>
+            </div>
+          </div>
+
+          {/* Mockup */}
+          <div className="relative">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-5 backdrop-blur-xl shadow-2xl shadow-cyan-500/10">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+
+              <div className="bg-zinc-900 rounded-2xl p-6 border border-white/10">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-bold">AI Resultat</h2>
+                  <span className="text-cyan-400 text-sm">98% träffsäkerhet</span>
+                </div>
+
+                <div className="aspect-video rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 flex items-center justify-center mb-6 overflow-hidden">
+                  <div className="text-center">
+                    <div className="text-6xl mb-3">🪨</div>
+                    <p className="text-zinc-400">Exempelbild på stenanalys</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="bg-cyan-400/10 border border-cyan-400/20 rounded-xl p-4">
+                    <p className="text-sm text-zinc-400 mb-1">Identifierad sten</p>
+                    <h3 className="font-bold text-lg">Granit</h3>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                      <p className="text-xs text-zinc-400">Kvarts</p>
+                      <p className="font-bold">85%</p>
+                    </div>
+
+                    <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                      <p className="text-xs text-zinc-400">Fältspat</p>
+                      <p className="font-bold">74%</p>
+                    </div>
+
+                    <div className="bg-white/5 rounded-xl p-3 text-center border border-white/10">
+                      <p className="text-xs text-zinc-400">Glimmer</p>
+                      <p className="font-bold">61%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INFO TABS */}
+      <section className="px-8 md:px-20 py-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-black mb-4">Om AI-systemet</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Interaktiva informationsflikar som beskriver hur Rockfinder.io fungerar.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 justify-center mb-8">
+            {tabs.map((tab, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`px-6 py-3 rounded-2xl transition-all duration-300 border ${
+                  activeTab === index
+                    ? "bg-cyan-400 text-black border-cyan-400"
+                    : "bg-white/5 border-white/10 hover:border-cyan-400"
+                }`}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl min-h-[220px] flex items-center justify-center text-center shadow-xl">
+            <p className="text-lg text-zinc-200 leading-relaxed max-w-3xl">
+              {tabs[activeTab].content}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* INTERACTIVE DEMO */}
+      <section className="px-8 md:px-20 py-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 className="text-4xl font-black mb-5">Fake AI-interaktion</h2>
+            <p className="text-zinc-400 leading-relaxed mb-8">
+              Här visas ett exempel på hur en användare kan interagera med Rockfinder.io.
+            </p>
+
+            <div className="space-y-4">
+              {fakeQuestions.map((question, index) => (
+                <button
+                  key={index}
+                  onClick={() => sendFakeMessage(question)}
+                  className="w-full text-left bg-white/5 border border-white/10 hover:border-cyan-400 hover:bg-cyan-400/10 rounded-2xl p-4 transition"
+                >
+                  {question}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-5 backdrop-blur-xl h-[500px] flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-4">
+              <div>
+                <h3 className="font-bold text-lg">Rockfinder.io Chat</h3>
+                <p className="text-zinc-400 text-sm">AI Assistant</p>
+              </div>
+
+              <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-4 pr-2">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`flex ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                      msg.role === "user"
+                        ? "bg-cyan-400 text-black"
+                        : "bg-zinc-800 border border-white/10"
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 border border-white/10 rounded-2xl bg-zinc-900 px-4 py-3 flex items-center justify-between">
+              <span className="text-zinc-500 text-sm">
+                Skriv en fråga om stenar...
+              </span>
+
+              <button className="bg-cyan-400 text-black px-4 py-2 rounded-xl font-semibold hover:bg-cyan-300 transition">
+                Skicka
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="px-8 md:px-20 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-black mb-4">Teknik & Design</h2>
+            <p className="text-zinc-400">
+              Modern UI inspirerad av framtidens AI-plattformar.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "AI Analys",
+                icon: "🤖",
+                text: "Maskininlärning används för att analysera stenars mönster och mineralinnehåll.",
+              },
+              {
+                title: "Snabb Identifiering",
+                icon: "⚡",
+                text: "Systemet ger resultat på några sekunder med hög precision.",
+              },
+              {
+                title: "Interaktiv Design",
+                icon: "🎨",
+                text: "Stilren och användarvänlig design med moderna animationer och effekter.",
+              },
+            ].map((card, index) => (
+              <div
+                key={index}
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-cyan-400 hover:-translate-y-2 transition-all duration-300 shadow-xl"
+              >
+                <div className="text-5xl mb-5">{card.icon}</div>
+                <h3 className="text-2xl font-bold mb-3">{card.title}</h3>
+                <p className="text-zinc-400 leading-relaxed">{card.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 px-8 md:px-20 py-10 text-center text-zinc-500">
+        <p>
+          Skolprojekt om AI • Designad med React & Tailwind CSS • 2026
+        </p>
+      </footer>
+    </div>
+  );
+}
 
